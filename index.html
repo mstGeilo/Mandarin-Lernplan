@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中文 — Mandarin Study Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='30%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%23c44dff'/%3E%3Cstop offset='100%25' stop-color='%23800080'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='46' font-family='serif' font-size='36' fill='white' text-anchor='middle'%3E%E5%BF%97%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #0e0e10;
+    --surface: #16161a;
+    --surface2: #1e1e24;
+    --border: #2a2a32;
+    --border2: #353540;
+    --text: #f0ede8;
+    --muted: #8a8798;
+    --accent: #e8c97a;
+    --accent2: #c4a55a;
+    --red: #e87a7a;
+    --green: #7ae8a8;
+    --blue: #7aaee8;
+    --purple: #b07ae8;
+    --pill-air-bg: #1a2a3a;
+    --pill-air: #7aaee8;
+    --pill-red-bg: #2a1a1a;
+    --pill-red: #e87a7a;
+    --pill-wc-bg: #1a2a1a;
+    --pill-wc: #7ae8a8;
+    --pill-write-bg: #251a3a;
+    --pill-write: #b07ae8;
+    --pill-book-bg: #2a221a;
+    --pill-book: #e8b87a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(232,201,122,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(122,174,232,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    padding: 36px 0 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .logo-area h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .logo-area h1 span {
+    color: var(--accent);
+  }
+
+  .logo-area p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 5px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  /* Word of the day card */
+  .wotd-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wotd-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+
+  .wotd-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .wotd-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .wotd-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .wotd-char {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--accent);
+    flex-shrink: 0;
+    text-shadow: 0 0 40px rgba(232,201,122,0.3);
+  }
+
+  .wotd-info { flex: 1; min-width: 140px; }
+
+  .wotd-pinyin {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .wotd-meaning {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .wotd-example {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .wotd-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .btn-new-word {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+
+  .btn-new-word:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .wotd-phase-badge {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* Phase selector */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .phase-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .phase-tab {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--surface);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .phase-tab:hover { border-color: var(--border2); color: var(--text); }
+
+  .phase-tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #1a1500;
+  }
+
+  /* Day selector */
+  .day-selector {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 22px;
+  }
+
+  .day-btn {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--surface);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 6px 2px;
+    letter-spacing: 0.03em;
+  }
+
+  .day-btn .day-name { font-size: 11px; }
+  .day-btn .day-sub { font-size: 9px; color: var(--muted); opacity: 0.6; font-weight: 400; }
+
+  .day-btn:hover { border-color: var(--border2); color: var(--text); }
+
+  .day-btn.active {
+    background: var(--surface2);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .day-btn.rest-day {
+    opacity: 0.45;
+  }
+
+  .day-btn.today-marker {
+    border-style: dashed;
+  }
+
+  /* Content blocks */
+  .blocks { display: flex; flex-direction: column; gap: 10px; }
+
+  .block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .block:hover { border-color: var(--border2); }
+
+  .block-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .block-title {
+    font-weight: 500;
+    font-size: 14px;
+    flex: 1;
+  }
+
+  .block-mins {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .block-toggle {
+    font-size: 12px;
+    color: var(--muted);
+    transition: transform 0.25s;
+    width: 16px;
+    text-align: center;
+  }
+
+  .block.open .block-toggle { transform: rotate(90deg); }
+
+  .block-body {
+    padding: 14px 16px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .block.open .block-body { display: flex; }
+
+  /* Pills */
+  .pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .pill-air   { background: var(--pill-air-bg);   color: var(--pill-air); }
+  .pill-red   { background: var(--pill-red-bg);   color: var(--pill-red); }
+  .pill-wc    { background: var(--pill-wc-bg);    color: var(--pill-wc); }
+  .pill-write { background: var(--pill-write-bg); color: var(--pill-write); }
+  .pill-book  { background: var(--pill-book-bg);  color: var(--pill-book); }
+  .pill-opt   { background: var(--surface2);      color: var(--muted); }
+
+  /* Steps */
+  .step {
+    display: flex;
+    gap: 12px;
+  }
+
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .step-title {
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: var(--text);
+  }
+
+  .step-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .step-example {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: var(--surface2);
+    border-radius: 8px;
+    border-left: 2px solid var(--border2);
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.65;
+    white-space: pre-line;
+  }
+
+  .step-example .zh {
+    font-style: normal;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  /* Miss box */
+  .miss-box {
+    margin-top: 4px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: 10px;
+  }
+
+  .miss-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .miss-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Progress */
+  .progress-area {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .progress-meta span:first-child { color: var(--text); font-weight: 500; }
+
+  .prog-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  /* Phase goal */
+  .phase-goal {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .phase-goal::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* Rest day */
+  .rest-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .rest-char {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    opacity: 0.5;
+  }
+
+  .rest-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .rest-desc {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 320px;
+    margin: 0 auto 16px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    animation: fadeUp 0.25s ease forwards;
+  }
+
+  @keyframes shimmer {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  /* Mobile tweaks */
+  @media (max-width: 480px) {
+    .day-btn { font-size: 10px; }
+    .wotd-char { font-size: 42px; }
+    .phase-tab { padding: 7px 12px; font-size: 11px; }
+  }
+</style>
+<link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIuWtpuS4reaWhyBNYW5kYXJpbiIsCiAgInNob3J0X25hbWUiOiAi5a2m5Lit5paHIiwKICAiZGVzY3JpcHRpb24iOiAiTWFuZGFyaW4gU3R1ZHkgUGxhbiDigJQgTWFpbnogdG8gU2hhbmdoYWkiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBlMGUxMCIsCiAgInRoZW1lX2NvbG9yIjogIiM5YjFmZTgiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlJajRLSUNBOFpHVm1jejRLSUNBZ0lEeHlZV1JwWVd4SGNtRmthV1Z1ZENCcFpEMGlaeUlnWTNnOUlqTTRKU0lnWTNrOUlqSTRKU0lnY2owaU56SWxJajRLSUNBZ0lDQWdQSE4wYjNBZ2IyWm1jMlYwUFNJd0pTSWdjM1J2Y0MxamIyeHZjajBpSTJReE5qWm1aaUl2UGdvZ0lDQWdJQ0E4YzNSdmNDQnZabVp6WlhROUlqVTFKU0lnYzNSdmNDMWpiMnh2Y2owaUl6bGlNV1psT0NJdlBnb2dJQ0FnSUNBOGMzUnZjQ0J2Wm1aelpYUTlJakV3TUNVaUlITjBiM0F0WTI5c2IzSTlJaU0yWVRBd09Ua2lMejRLSUNBZ0lEd3ZjbUZrYVdGc1IzSmhaR2xsYm5RK0NpQWdQQzlrWldaelBnb2dJRHh5WldOMElIZHBaSFJvUFNJMU1USWlJR2hsYVdkb2REMGlOVEV5SWlCeWVEMGlNVEV5SWlCbWFXeHNQU0oxY213b0kyY3BJaTgrQ2lBZ1BIUmxlSFFnZUQwaU1qVTJJaUI1UFNJek56QWlJR1p2Ym5RdFptRnRhV3g1UFNKelpYSnBaaUlnWm05dWRDMXphWHBsUFNJeU9EQWlJR1pwYkd3OUluZG9hWFJsSWlCbWFXeHNMVzl3WVdOcGRIazlJakF1TVRnaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQdVcvbHp3dmRHVjRkRDRLSUNBOGRHVjRkQ0I0UFNJeU5UWWlJSGs5SWpNMk1DSWdabTl1ZEMxbVlXMXBiSGs5SW5ObGNtbG1JaUJtYjI1MExYTnBlbVU5SWpJNE1DSWdabWxzYkQwaWQyaHBkR1VpSUhSbGVIUXRZVzVqYUc5eVBTSnRhV1JrYkdVaVB1Vy9send2ZEdWNGRENEtQQzl6ZG1jKyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0KICBdCn0=">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="学中文">
+<meta name="theme-color" content="#9b1fe8">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZyIgY3g9IjM4JSIgY3k9IjI4JSIgcj0iNzIlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QxNjZmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjU1JSIgc3RvcC1jb2xvcj0iIzliMWZlOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YTAwOTkiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHRleHQgeD0iMjU2IiB5PSIzNzAiIGZvbnQtZmFtaWx5PSJzZXJpZiIgZm9udC1zaXplPSIyODAiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuW/lzwvdGV4dD4KICA8dGV4dCB4PSIyNTYiIHk9IjM2MCIgZm9udC1mYW1pbHk9InNlcmlmIiBmb250LXNpemU9IjI4MCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuW/lzwvdGV4dD4KPC9zdmc+">
+</head>
+<body>
+<div class="container">
+
+
+  <header>
+    <div class="header-top">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="flex-shrink:0;">
+          <svg width="56" height="56" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:14px;box-shadow:0 0 28px rgba(180,60,255,0.35);">
+            <defs>
+              <radialGradient id="ig" cx="38%" cy="28%" r="72%">
+                <stop offset="0%" stop-color="#d166ff"/>
+                <stop offset="55%" stop-color="#9b1fe8"/>
+                <stop offset="100%" stop-color="#6a0099"/>
+              </radialGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="url(#ig)"/>
+            <text x="32" y="46" font-family="serif" font-size="34" fill="white" fill-opacity="0.18" text-anchor="middle">&#24535;</text>
+            <text x="32" y="45" font-family="serif" font-size="34" fill="white" text-anchor="middle">&#24535;</text>
+          </svg>
+        </div>
+        <div class="logo-area">
+          <h1>学中文 <span>Mandarin</span></h1>
+          <p>Your personal study plan — Mainz → Shanghai</p>
+          <p style="font-size:11px;color:#b44dff;margin-top:3px;font-weight:500;letter-spacing:0.04em;">&#24535; zhì — ambition &amp; determination</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Word of the Day -->
+    <div class="wotd-card" id="wotd-card">
+      <div class="wotd-label">Word of the day</div>
+      <div class="wotd-main">
+        <div class="wotd-char" id="wotd-char">你好</div>
+        <div class="wotd-info">
+          <div class="wotd-pinyin" id="wotd-pinyin">nǐ hǎo</div>
+          <div class="wotd-meaning" id="wotd-meaning">Hello</div>
+          <div class="wotd-example" id="wotd-example">你好！你叫什么名字？<br><em>Hello! What is your name?</em></div>
+        </div>
+      </div>
+      <div class="wotd-actions">
+        <button class="btn-new-word" onclick="newWord()">↻ New word</button>
+        <span class="wotd-phase-badge pill" id="wotd-badge" style="background:var(--pill-book-bg);color:var(--pill-book)">Phase 1</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Phase Selector -->
+  <div class="section-label">Study phase</div>
+  <div class="phase-tabs">
+    <div class="phase-tab active" onclick="setPhase(0)">Phase 1 — Months 1–3</div>
+    <div class="phase-tab" onclick="setPhase(1)">Phase 2 — Months 4–8</div>
+    <div class="phase-tab" onclick="setPhase(2)">Phase 3 — Months 9–12</div>
+  </div>
+
+  <!-- Day Selector -->
+  <div class="section-label">Day</div>
+  <div class="day-selector" id="day-selector">
+    <div class="day-btn active" onclick="setDay(0)"><span class="day-name">Mon</span><span class="day-sub">New</span></div>
+    <div class="day-btn" onclick="setDay(1)"><span class="day-name">Tue</span><span class="day-sub">Review</span></div>
+    <div class="day-btn" onclick="setDay(2)"><span class="day-name">Wed</span><span class="day-sub">New</span></div>
+    <div class="day-btn" onclick="setDay(3)"><span class="day-name">Thu</span><span class="day-sub">Review</span></div>
+    <div class="day-btn" onclick="setDay(4)"><span class="day-name">Fri</span><span class="day-sub">Reset</span></div>
+    <div class="day-btn rest-day" onclick="setDay(5)"><span class="day-name">Sat</span><span class="day-sub">Rest</span></div>
+    <div class="day-btn rest-day" onclick="setDay(6)"><span class="day-name">Sun</span><span class="day-sub">Rest</span></div>
+  </div>
+
+  <!-- Main content -->
+  <div id="main-content"></div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+
+const words = {
+  0: [
+    { char: '你好', pinyin: 'nǐ hǎo', meaning: 'Hello', example: '你好！你叫什么名字？\nHello! What is your name?' },
+    { char: '谢谢', pinyin: 'xiè xiè', meaning: 'Thank you', example: '谢谢你的帮助！\nThank you for your help!' },
+    { char: '再见', pinyin: 'zài jiàn', meaning: 'Goodbye', example: '明天再见！\nSee you tomorrow!' },
+    { char: '我', pinyin: 'wǒ', meaning: 'I / Me', example: '我是德国人。\nI am German.' },
+    { char: '你', pinyin: 'nǐ', meaning: 'You', example: '你好吗？\nHow are you?' },
+    { char: '是', pinyin: 'shì', meaning: 'To be (am/is/are)', example: '我是学生。\nI am a student.' },
+    { char: '不', pinyin: 'bù', meaning: 'No / Not', example: '我不明白。\nI don\'t understand.' },
+    { char: '好', pinyin: 'hǎo', meaning: 'Good / Fine', example: '很好！\nVery good!' },
+    { char: '中国', pinyin: 'zhōngguó', meaning: 'China', example: '我想去中国。\nI want to go to China.' },
+    { char: '学习', pinyin: 'xuéxí', meaning: 'To study / learn', example: '我在学习中文。\nI am studying Chinese.' },
+    { char: '什么', pinyin: 'shénme', meaning: 'What', example: '这是什么？\nWhat is this?' },
+    { char: '多少', pinyin: 'duōshǎo', meaning: 'How much / How many', example: '这个多少钱？\nHow much is this?' },
+    { char: '名字', pinyin: 'míngzi', meaning: 'Name', example: '你的名字是什么？\nWhat is your name?' },
+    { char: '朋友', pinyin: 'péngyǒu', meaning: 'Friend', example: '他是我的朋友。\nHe is my friend.' },
+    { char: '吃', pinyin: 'chī', meaning: 'To eat', example: '我想吃饺子。\nI want to eat dumplings.' },
+    { char: '喝', pinyin: 'hē', meaning: 'To drink', example: '你喝茶吗？\nDo you drink tea?' },
+    { char: '去', pinyin: 'qù', meaning: 'To go', example: '我要去上海。\nI want to go to Shanghai.' },
+    { char: '今天', pinyin: 'jīntiān', meaning: 'Today', example: '今天天气很好。\nToday\'s weather is very good.' },
+    { char: '明天', pinyin: 'míngtiān', meaning: 'Tomorrow', example: '明天见！\nSee you tomorrow!' },
+    { char: '上海', pinyin: 'shànghǎi', meaning: 'Shanghai', example: '上海是个大城市。\nShanghai is a big city.' },
+  ],
+  1: [
+    { char: '供应链', pinyin: 'gōngyìngliàn', meaning: 'Supply chain', example: '供应链管理很重要。\nSupply chain management is very important.' },
+    { char: '采购', pinyin: 'cǎigòu', meaning: 'Sourcing / Procurement', example: '我负责采购工作。\nI am responsible for procurement.' },
+    { char: '工厂', pinyin: 'gōngchǎng', meaning: 'Factory', example: '这个工厂在深圳。\nThis factory is in Shenzhen.' },
+    { char: '价格', pinyin: 'jiàgé', meaning: 'Price', example: '价格可以便宜一点吗？\nCan the price be a bit cheaper?' },
+    { char: '质量', pinyin: 'zhìliàng', meaning: 'Quality', example: '这个产品的质量很好。\nThe quality of this product is very good.' },
+    { char: '产品', pinyin: 'chǎnpǐn', meaning: 'Product', example: '你们有什么产品？\nWhat products do you have?' },
+    { char: '订单', pinyin: 'dìngdān', meaning: 'Order', example: '我想下一个订单。\nI want to place an order.' },
+    { char: '交货', pinyin: 'jiāohuò', meaning: 'Delivery / Handover of goods', example: '交货期是多久？\nWhat is the delivery time?' },
+    { char: '合同', pinyin: 'hétong', meaning: 'Contract', example: '我们需要签合同。\nWe need to sign a contract.' },
+    { char: '谈判', pinyin: 'tánpàn', meaning: 'Negotiation', example: '我们来谈判价格吧。\nLet\'s negotiate the price.' },
+    { char: '批发', pinyin: 'pīfā', meaning: 'Wholesale', example: '我们做批发生意。\nWe do wholesale business.' },
+    { char: '进口', pinyin: 'jìnkǒu', meaning: 'Import', example: '我想从中国进口商品。\nI want to import goods from China.' },
+    { char: '出口', pinyin: 'chūkǒu', meaning: 'Export', example: '中国出口很多产品。\nChina exports many products.' },
+    { char: '客户', pinyin: 'kèhù', meaning: 'Client / Customer', example: '这个客户很重要。\nThis client is very important.' },
+    { char: '市场', pinyin: 'shìchǎng', meaning: 'Market', example: '中国市场很大。\nThe Chinese market is very large.' },
+    { char: '物流', pinyin: 'wùliú', meaning: 'Logistics', example: '物流需要多少天？\nHow many days does logistics take?' },
+    { char: '样品', pinyin: 'yàngpǐn', meaning: 'Sample', example: '可以先发样品吗？\nCan you send a sample first?' },
+    { char: '付款', pinyin: 'fùkuǎn', meaning: 'Payment', example: '付款方式是什么？\nWhat is the payment method?' },
+    { char: '最低订购量', pinyin: 'zuìdī dìnggòuliàng', meaning: 'Minimum order quantity (MOQ)', example: '最低订购量是多少？\nWhat is the minimum order quantity?' },
+    { char: '代理', pinyin: 'dàilǐ', meaning: 'Agent / Representative', example: '我们是欧洲的采购代理。\nWe are a European sourcing agent.' },
+  ],
+  2: [
+    { char: '跨境电商', pinyin: 'kuà jìng diànshāng', meaning: 'Cross-border e-commerce', example: '跨境电商发展得很快。\nCross-border e-commerce is developing rapidly.' },
+    { char: '供应商管理', pinyin: 'gōngyìngshāng guǎnlǐ', meaning: 'Supplier management', example: '供应商管理是我们公司的核心业务。\nSupplier management is our company\'s core business.' },
+    { char: '知识产权', pinyin: 'zhīshí chǎnquán', meaning: 'Intellectual property', example: '保护知识产权很重要。\nProtecting intellectual property is very important.' },
+    { char: '独家代理', pinyin: 'dújiā dàilǐ', meaning: 'Exclusive agent', example: '我们希望成为独家代理。\nWe hope to become the exclusive agent.' },
+    { char: '验货', pinyin: 'yàn huò', meaning: 'Quality inspection / Goods verification', example: '发货前需要验货。\nGoods need to be inspected before shipment.' },
+    { char: '违约金', pinyin: 'wéiyuē jīn', meaning: 'Penalty / Breach of contract fee', example: '如果违约需要支付违约金。\nIf there is a breach, a penalty must be paid.' },
+    { char: '市场调研', pinyin: 'shìchǎng diàoyán', meaning: 'Market research', example: '我们做了详细的市场调研。\nWe conducted detailed market research.' },
+    { char: '竞争优势', pinyin: 'jìngzhēng yōushì', meaning: 'Competitive advantage', example: '我们的竞争优势是价格和服务。\nOur competitive advantage is price and service.' },
+    { char: '资质认证', pinyin: 'zīzhì rènzhèng', meaning: 'Qualification / Certification', example: '请提供相关资质认证文件。\nPlease provide relevant certification documents.' },
+    { char: '谈条件', pinyin: 'tán tiáojiàn', meaning: 'To negotiate terms', example: '我们需要谈具体的合作条件。\nWe need to negotiate specific cooperation terms.' },
+    { char: '商业模式', pinyin: 'shāngyè móshì', meaning: 'Business model', example: '我们的商业模式很有竞争力。\nOur business model is very competitive.' },
+    { char: '风险管理', pinyin: 'fēngxiǎn guǎnlǐ', meaning: 'Risk management', example: '风险管理是国际贸易的关键。\nRisk management is key to international trade.' },
+    { char: '利润率', pinyin: 'lìrùn lǜ', meaning: 'Profit margin', example: '这个产品的利润率是多少？\nWhat is the profit margin on this product?' },
+    { char: '战略合作', pinyin: 'zhànlüè hézuò', meaning: 'Strategic partnership', example: '我们希望建立长期战略合作。\nWe hope to establish a long-term strategic partnership.' },
+    { char: '品质管控', pinyin: 'pǐnzhì guǎnkòng', meaning: 'Quality control', example: '品质管控是我们服务的核心。\nQuality control is the core of our service.' },
+    { char: '仓储', pinyin: 'cāngchǔ', meaning: 'Warehousing / Storage', example: '仓储费用包括在报价里吗？\nAre warehousing costs included in the quote?' },
+    { char: '增值税', pinyin: 'zēngzhíshuì', meaning: 'VAT / Value added tax', example: '价格含增值税吗？\nDoes the price include VAT?' },
+    { char: '授权书', pinyin: 'shòuquán shū', meaning: 'Letter of authorization', example: '请提供工厂的授权书。\nPlease provide the factory\'s letter of authorization.' },
+    { char: '海关申报', pinyin: 'hǎiguān shēnbào', meaning: 'Customs declaration', example: '海关申报需要哪些文件？\nWhat documents are needed for customs declaration?' },
+    { char: '可持续发展', pinyin: 'kě chíxù fāzhǎn', meaning: 'Sustainable development', example: '我们注重可持续发展理念。\nWe emphasize the concept of sustainable development.' },
+  ]
+};
+
+const phases = [
+  {
+    title: "Phase 1 — Build the habit & nail the basics",
+    goal: "~150 words, pinyin mastered, 4 tones understood, first real conversations started",
+    progress: 25,
+    days: [
+      // MON
+      {
+        label: "New content + writing",
+        blocks: [
+          { title: "AirLearn session", pill: "pill-air", pillText: "AirLearn", mins: "15 min", steps: [
+            { t: "Start completely fresh", d: "Delete or reset your old progress. Go to the very beginning: pinyin and tones. Don't rush past this — tones are the #1 thing Europeans get wrong and it's much harder to unlearn bad habits later.", ex: null },
+            { t: "Do 1 lesson only", d: "Just one new lesson today. AirLearn will introduce new words with audio. Your only job: repeat each word out loud, matching the tone exactly. Don't just tap through.", ex: null },
+            { t: "Replay any word with a tone mark you're unsure about", d: "The four tones (ā á ǎ à) feel weird at first. Play each one 3 times minimum. This is not wasted time — this is the whole foundation.", ex: null }
+          ]},
+          { title: "Handwriting", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Write today's new words by hand", d: "Take a small notebook (keep it only for Mandarin). Write each new word 3 times: once the pinyin, once the characters, once the meaning in German. Simple as that.", ex: "Example entry:\nnǐ hǎo / 你好 / Hallo" },
+            { t: "Why this works", d: "Writing by hand creates a second memory path. You'll recall words faster when you speak because your hand remembers them too. Takes 5 minutes, worth 20.", ex: null }
+          ]},
+          { title: "RedNote — passive scroll", pill: "pill-red", pillText: "RedNote", mins: "5 min", steps: [
+            { t: "Just browse, don't stress", d: "Open RedNote and scroll Chinese content for 5 minutes. You won't understand it yet — that's fine. You're training your eye to recognise character shapes.", ex: "Search: 上海生活 (Shanghai life) or 采购 (sourcing)" }
+          ]}
+        ],
+        miss: "Missed this day? Just skip it — continue with tomorrow's plan. Don't double up. One missed day has zero effect on a year-long plan."
+      },
+      // TUE
+      {
+        label: "Review + first WeChat message",
+        blocks: [
+          { title: "AirLearn — review day", pill: "pill-air", pillText: "AirLearn", mins: "15 min", steps: [
+            { t: "Open the Words / Vocabulary tab", d: "AirLearn tracks every word you've learned and marks ones you're weak on. Today you only do review — no new lessons. Go through flagged words and do the quiz for each one.", ex: null },
+            { t: "How spaced repetition works", d: "AirLearn shows you a word and you rate how well you remembered it. Be honest — if you hesitated, mark it as hard. The app will resurface it sooner. This is the most effective memorisation method that exists.", ex: null },
+            { t: "Target: zero red/struggling words by end of session", d: "If you have more than 10 flagged words after just 1 day, you're adding new lessons too fast. Slow down.", ex: null }
+          ]},
+          { title: "Notebook review", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Flip back through your notebook", d: "Cover the German/pinyin columns with your hand and try to recall what each character means. Then flip it — look at the German and write the Chinese from memory.", ex: null },
+            { t: "Circle anything you blanked on", d: "These circles are your personal weak list. You'll drill these specifically on Friday.", ex: null }
+          ]},
+          { title: "WeChat — first message", pill: "pill-wc", pillText: "WeChat", mins: "5 min", steps: [
+            { t: "Send one message in Chinese today", d: "Pick your most patient WeChat contact. Send something simple. Don't use Google Translate for the whole thing — use AirLearn words you actually learned.", ex: "你好！我在学中文。你最近怎么样？\n(nǐ hǎo! wǒ zài xué zhōngwén. nǐ zuìjìn zěnme yàng?)\nHello! I'm learning Chinese. How have you been?" },
+            { t: "Ask them to correct you", d: "Say: 请用中文回复我，如果我写错了请纠正我\n(Please reply in Chinese and correct me if I'm wrong.)\nMost native speakers are happy to help.", ex: null }
+          ]}
+        ],
+        miss: "Missed Tuesday? Skip it. The WeChat message can go out on Wednesday instead — your contact won't mind."
+      },
+      // WED
+      {
+        label: "New content + reading",
+        blocks: [
+          { title: "AirLearn — new lesson", pill: "pill-air", pillText: "AirLearn", mins: "15 min", steps: [
+            { t: "One new lesson + tone drill", d: "Same as Monday. One new lesson, out loud every word. Wednesday is your second new-content day of the week — keep the pace slow and deliberate.", ex: null },
+            { t: "Focus today: numbers and greetings", d: "Priority topics in phase 1: greetings, numbers, colours, basic questions. These come up in every real conversation and build confidence fast.", ex: null }
+          ]},
+          { title: "Handwriting", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Write Wednesday's new words in your notebook", d: "Same format as Monday. Pinyin / Characters / German meaning, 3 times each.", ex: null },
+            { t: "From week 2: add a sentence", d: "After writing the words, try to write one simple sentence using one of them. Even broken grammar is fine — you're pushing yourself to produce, not just memorise.", ex: "Example: 我有三个苹果。\n(Wǒ yǒu sān gè píngguǒ.) — I have three apples." }
+          ]},
+          { title: "RedNote — find one post", pill: "pill-red", pillText: "RedNote", mins: "5 min", steps: [
+            { t: "Find a short post you almost understand", d: "Screenshot it. Look up maximum 3 words you don't know. Try to read it fully. This is your first real reading practice — it should feel hard and satisfying.", ex: null }
+          ]}
+        ],
+        miss: "Missed Wednesday? Skip it. Do Thursday's review plan as usual — missing one new-lesson day per week is fine."
+      },
+      // THU
+      {
+        label: "Review + sentence writing",
+        blocks: [
+          { title: "AirLearn — review day", pill: "pill-air", pillText: "AirLearn", mins: "15 min", steps: [
+            { t: "Review only — same as Tuesday", d: "No new lessons on Thursday. Go through your Words tab, drill everything flagged, and do the full quiz. By now you should have ~15–20 words. Make sure all of them feel solid.", ex: null },
+            { t: "Listen to the audio for every word", d: "Don't just read the pinyin. Play the audio and repeat out loud. Your pronunciation needs active practice, not just passive recognition.", ex: null }
+          ]},
+          { title: "Notebook — sentence writing", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Write 3 sentences using this week's words", d: "They can be completely random. The goal is using words in context, not memorising isolated vocab. Even wrong grammar is useful.", ex: "我学中文。(Wǒ xué zhōngwén.) I learn Chinese.\n今天是星期四。(Jīntiān shì xīngqīsì.) Today is Thursday.\n我有一本书。(Wǒ yǒu yī běn shū.) I have a book." },
+          ]},
+          { title: "WeChat — reply and respond", pill: "pill-wc", pillText: "WeChat", mins: "5 min", steps: [
+            { t: "Check if your contact replied", d: "Read their message carefully. Look up any words you don't understand. Write a reply — keep it short, 1–2 sentences. The back-and-forth is the practice, not just the sending.", ex: null },
+            { t: "Use your notebook words", d: "Challenge yourself: use at least one word from this week's notebook in your reply. That's the bridge between study and real use.", ex: null }
+          ]}
+        ],
+        miss: "Missed Thursday? The WeChat reply can wait until Friday. Skip the notebook sentences — they're bonus practice, not core."
+      },
+      // FRI
+      {
+        label: "Weekly reset",
+        blocks: [
+          { title: "AirLearn — full week review", pill: "pill-air", pillText: "AirLearn", mins: "10 min", steps: [
+            { t: "Run through all words from the whole week", d: "Friday is your weekly reset. Go to Words, filter by this week, and quiz everything. Nothing should be red by Friday — if it is, it goes on your notebook circle list.", ex: null }
+          ]},
+          { title: "Notebook — circle words drill", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Open to your circled words from Tuesday", d: "These are the ones you blanked on. Write each one 5 times today. Then close the notebook and try to recall them from memory over the weekend.", ex: null },
+            { t: "Count your total words this week", d: "Write the running total at the top of Friday's page. Seeing a number grow week by week is the visible progress that stops you from quitting.", ex: "Week 1: 8 words\nWeek 2: 17 words\nWeek 3: 26 words ← this is your motivation" }
+          ]},
+          { title: "RedNote — comment in Chinese", pill: "pill-red", pillText: "RedNote", mins: "10 min", steps: [
+            { t: "Leave one comment on a post in Chinese", d: "Find any post you found interesting this week and leave a short comment. You don't need to write much.", ex: "很有意思！(Very interesting!)\n谢谢分享！(Thanks for sharing!)\n我也想去上海！(I also want to go to Shanghai!)" },
+            { t: "Native speakers will reply", d: "And when they do, that's a real conversation you earned. Screenshot it and keep it as proof it's working.", ex: null }
+          ]}
+        ],
+        miss: "Missed Friday reset? Do it Monday morning before the new week starts. The word count review especially — it takes 5 minutes and sets you up mentally."
+      },
+      // SAT
+      {
+        label: "Rest day",
+        isRest: true,
+        restChar: "休",
+        restTitle: "Saturday — rest",
+        restDesc: "No plan, no guilt. The 5-day structure is intentional. Rest prevents burnout, which is why you quit last time. If you feel like it: spend 5 minutes flipping through your notebook. That's it.",
+        optionalTitle: "Optional (5 min max)",
+        optionalText: "Flip through this week's notebook entries. No new studying — just reading what you already know. That's a reminder of progress, not a study session."
+      },
+      // SUN
+      {
+        label: "Rest day",
+        isRest: true,
+        restChar: "想",
+        restTitle: "Sunday — set your goal",
+        restDesc: "The only thing worth doing: spend 2 minutes thinking about one thing you want to be able to say by next Friday.",
+        optionalTitle: "Optional (2 min)",
+        optionalText: "Write one specific goal for next week in your notebook in German. On Monday you'll figure out how to say it in Chinese. Example: 'I want to say what I study and where I'm from.'"
+      }
+    ]
+  },
+  // ===================== PHASE 2 =====================
+  {
+    title: "Phase 2 — Business vocab & real conversations",
+    goal: "~500 words, basic supplier messages readable, short voice messages possible",
+    progress: 60,
+    days: [
+      // MON
+      {
+        label: "Business vocab + graded reader starts",
+        blocks: [
+          { title: "AirLearn — business vocab mode", pill: "pill-air", pillText: "AirLearn", mins: "15 min", steps: [
+            { t: "Switch your focus to trade & business words", d: "From month 4, steer your AirLearn sessions toward business vocabulary. If it doesn't have a dedicated business pack, search for words and add them manually.", ex: "Priority words:\n供应链 gōngyìngliàn — supply chain\n采购 cǎigòu — sourcing\n工厂 gōngchǎng — factory\n价格 jiàgé — price\n质量 zhìliàng — quality\n交货期 jiāohuò qī — delivery time" },
+            { t: "Review first, then one new lesson", d: "By now you have 150+ words. Always clear your review queue before adding new words — the queue is your foundation, new words are just bricks on top.", ex: null }
+          ]},
+          { title: "Notebook — business glossary", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Start a dedicated business section in your notebook", d: "Flip to the back of your notebook and build a personal sourcing glossary. Every new business word goes here with pinyin, characters, and a sample sentence.", ex: "采购 cǎigòu\n我负责采购工作。\n(I am responsible for procurement.)" },
+            { t: "Write one fake supplier message per week", d: "From week 2 of this phase: write a 3–4 sentence pretend email to a Chinese factory. Look up the correct version afterwards and compare. The gap is your next learning target.", ex: null }
+          ]},
+          { title: "Graded reader — start", pill: "pill-book", pillText: "Book", mins: "5 min", steps: [
+            { t: "Get a Level 1 Chinese graded reader", d: "A graded reader is written specifically for learners — simple vocabulary, short sentences, real stories. This is how you transition from app learning to actual reading.", ex: "Good options:\n• Chinese Breeze series (Level 1, 300 words)\n• Mandarin Companion series\n• HSK Standard Course readers\nAll on Amazon for ~€8–12" },
+            { t: "Read 1–2 pages per session", d: "Don't look up every word. Guess from context. Only look up words that appear 3+ times — those are worth learning. Circle them and add to your notebook.", ex: null }
+          ]}
+        ],
+        miss: "Missed Monday? Skip it completely. Tuesday's review is more important — always prioritise the review days over new-content days."
+      },
+      // TUE
+      {
+        label: "Review + first voice message",
+        blocks: [
+          { title: "AirLearn — review", pill: "pill-air", pillText: "AirLearn", mins: "15 min", steps: [
+            { t: "Full review session", d: "Clear your entire review queue. By phase 2 you might have 30–50 words in the queue on a review day — that's normal. Work through all of them. Speed increases with practice.", ex: null }
+          ]},
+          { title: "Notebook + sentence building", pill: "pill-write", pillText: "Write it down", mins: "10 min", steps: [
+            { t: "Write 5 sentences today", d: "Not random sentences — write sentences you could actually use. Things you'd say to a supplier, a future client, or a Chinese contact.", ex: "我是德国的学生，我学商务和供应链。\n(I am a German student studying business and supply chain.)\n你们工厂在哪里？\n(Where is your factory?)" }
+          ]},
+          { title: "WeChat — voice message attempt", pill: "pill-wc", pillText: "WeChat", mins: "5 min", steps: [
+            { t: "Send a voice message this week", d: "Pick one message you'd normally type and record it as a voice message instead. It will feel embarrassing. Do it anyway — speaking Mandarin to a real person is irreplaceable.", ex: null },
+            { t: "If they correct your pronunciation, celebrate", d: "A correction from a native speaker is worth 10 AirLearn lessons. Write down exactly what they corrected in your notebook.", ex: null }
+          ]}
+        ],
+        miss: "Missed Tuesday review? Do it Wednesday morning before the new lesson. Never skip two review days in a row."
+      },
+      // WED
+      {
+        label: "New lesson + RedNote engagement",
+        blocks: [
+          { title: "AirLearn — new lesson", pill: "pill-air", pillText: "AirLearn", mins: "10 min", steps: [
+            { t: "One new lesson, business-focused", d: "Same structure as phase 1 Wednesday. One lesson, out loud, focused. By now lessons should feel faster — if you finish in 10 minutes, start a review of this week's words.", ex: null }
+          ]},
+          { title: "RedNote — engage deeply", pill: "pill-red", pillText: "RedNote", mins: "10 min", steps: [
+            { t: "Find a sourcing or business post", d: "Search: 义乌市场 (Yiwu market), 跨境电商 (cross-border e-commerce), or 工厂直播 (factory livestream). These are the communities you'll be working in.", ex: null },
+            { t: "Write a comment with 2 full sentences", d: "Push past single-word reactions. Write something genuine — ask a question, share a thought.", ex: "你好！我是德国学生，我对采购很感兴趣。\n(Hi! I'm a German student, I'm very interested in sourcing.)" }
+          ]},
+          { title: "Graded reader", pill: "pill-book", pillText: "Book", mins: "10 min", steps: [
+            { t: "Continue your graded reader — 2–3 pages", d: "Your reading speed will be painfully slow at first. By the end of phase 2 you'll be reading twice as fast. Trust the process.", ex: null },
+            { t: "After reading: summarise in German", d: "What happened in those pages? Write 2 sentences in German. This checks comprehension rather than just word recognition.", ex: null }
+          ]}
+        ],
+        miss: "Missed Wednesday? No problem. Skip the new lesson and just do Thursday's review. One less lesson per week doesn't set you back."
+      },
+      // THU
+      {
+        label: "Review + fake supplier email",
+        blocks: [
+          { title: "AirLearn — review", pill: "pill-air", pillText: "AirLearn", mins: "10 min", steps: [
+            { t: "Review queue only", d: "Clear it completely. Your goal this phase: a review queue that never goes above 40 words on any day.", ex: null }
+          ]},
+          { title: "Notebook — fake supplier email", pill: "pill-write", pillText: "Write it down", mins: "15 min", steps: [
+            { t: "Write a short pretend supplier email in Chinese", d: "This is the most practical exercise in the whole plan. Write a 3–4 sentence email as if you're contacting a Chinese factory for the first time.", ex: "你好！\n我是德国的采购商，我对你们的产品很感兴趣。\n请问最低订购量是多少？价格是多少？\n期待您的回复！\n(Hello! I am a German buyer, very interested in your products.\nWhat is the MOQ? What is the price?\nLooking forward to your reply!)" },
+            { t: "Then look up the correct version", d: "Find a real Chinese business email example online. Compare. Circle the differences. That gap is your next learning target.", ex: null }
+          ]},
+          { title: "WeChat — 5-message conversation", pill: "pill-wc", pillText: "WeChat", mins: "5 min", steps: [
+            { t: "Have a 5-message back-and-forth today", d: "Set a target: 5 messages each way before you stop. Keep each message short — 1 to 2 sentences. Quality of effort matters more than perfect grammar.", ex: null }
+          ]}
+        ],
+        miss: "Missed Thursday? The fake email exercise is the most valuable one to protect. If you only do one thing this week outside the AirLearn review, do the email."
+      },
+      // FRI
+      {
+        label: "Full weekly reset",
+        blocks: [
+          { title: "All tools — weekly reset", pill: "pill-air", pillText: "All tools", mins: "30 min", steps: [
+            { t: "AirLearn: clear the full week queue — 10 min", d: "Everything from Mon–Thu goes through review today. Target: nothing flagged as red going into the weekend.", ex: null },
+            { t: "Notebook: count and reflect — 5 min", d: "Count your total words in the main vocab section AND in the business glossary section separately. Write both numbers on Friday's page.", ex: "Week 18 total: 312 words\nBusiness glossary: 47 terms" },
+            { t: "Book: read 2 pages — 10 min", d: "Friday reading session. Same routine as Wednesday but you can push a bit further if you're feeling it.", ex: null },
+            { t: "RedNote: check your comments — 5 min", d: "See if anyone replied to your comments this week. Reply back in Chinese. This is proof that real people are engaging with your Chinese.", ex: null }
+          ]}
+        ],
+        miss: "Missed Friday reset? Do it Monday morning. The word count review especially — it sets you up mentally for the new week."
+      },
+      // SAT
+      {
+        label: "Rest day",
+        isRest: true,
+        restChar: "休",
+        restTitle: "Saturday — optional immersion",
+        restDesc: "Rest day. No plan. If you feel like it, watch a short Chinese business or lifestyle video — no subtitles, just listening.",
+        optionalTitle: "Optional (10 min max)",
+        optionalText: "YouTube: search '义乌市场' or 'Chinese factory tour'. Watch for fun, not for study. You're building a mental picture of the world you're moving into."
+      },
+      // SUN
+      {
+        label: "Rest day",
+        isRest: true,
+        restChar: "想",
+        restTitle: "Sunday — set next week's goal",
+        restDesc: "One specific, small goal for next week. Not 'get better at Chinese' — something concrete.",
+        optionalTitle: "Optional (2 min)",
+        optionalText: "Example: 'I want to ask a supplier for their minimum order quantity in Chinese without looking anything up.' Write it in your notebook."
+      }
+    ]
+  },
+  // ===================== PHASE 3 =====================
+  {
+    title: "Phase 3 — Conversation & real-world application",
+    goal: "HSK 2–3 level, hold a real conversation, read supplier messages without a dictionary",
+    progress: 95,
+    days: [
+      // MON
+      {
+        label: "Maintenance + extended reading",
+        blocks: [
+          { title: "AirLearn — maintenance mode", pill: "pill-air", pillText: "AirLearn", mins: "10 min", steps: [
+            { t: "Review only on most days", d: "By month 9 your AirLearn queue is your maintenance system, not your learning engine. New vocabulary now comes from your book, WeChat conversations, and RedNote.", ex: null },
+            { t: "Add new words manually from other sources", d: "Read a new business term on RedNote? Heard something in a video? Add it to AirLearn manually so it enters your review rotation. The app is now your database.", ex: null }
+          ]},
+          { title: "Graded reader — Level 2", pill: "pill-book", pillText: "Book", mins: "15 min", steps: [
+            { t: "Move to Level 2 graded reader (500 word vocabulary)", d: "By month 9 you should be finishing your Level 1 book. Level 2 introduces more complex grammar. The jump feels hard the first week — push through it.", ex: null },
+            { t: "Read 4–5 pages per session now", d: "Your reading speed has increased. 4–5 pages in 15 minutes is the target. Anything you can't guess from context: look it up, add to the notebook.", ex: null }
+          ]},
+          { title: "Notebook — paragraph output", pill: "pill-write", pillText: "Write it down", mins: "5 min", steps: [
+            { t: "Write one paragraph in Chinese", d: "About anything relevant to your life. Your sourcing agency idea, your BWL studies, what you did at the weekend. One paragraph, 5–8 sentences. Don't edit as you go — write first, correct after.", ex: null }
+          ]}
+        ],
+        miss: "Missed Monday? AirLearn review still happens on Tuesday. Skip the reading and paragraph — those are the bonus parts."
+      },
+      // TUE
+      {
+        label: "Speaking day + RedNote post",
+        blocks: [
+          { title: "WeChat — voice call", pill: "pill-wc", pillText: "WeChat", mins: "20 min", steps: [
+            { t: "Tuesday is speaking day", d: "By phase 3, text messages are too easy. Tuesday is your dedicated speaking practice day. Ask a WeChat contact for a voice call — even 10 minutes.", ex: null },
+            { t: "Prepare 3 topics beforehand", d: "Write 3 topics in your notebook before the call. Go in with a rough script — it's preparation, which is exactly what you'll do before real supplier calls.", ex: "Topics to prepare:\n• 你好，我学商务和供应链 — introducing yourself\n• 我想了解中国的采购市场 — your business interest\n• 德国和中国商业文化有什么不同？— culture question" },
+            { t: "After the call: write down 3 words you didn't know", d: "Real gaps exposed in real conversation are your most valuable words. Add them to AirLearn and notebook immediately.", ex: null }
+          ]},
+          { title: "RedNote — post your own content", pill: "pill-red", pillText: "RedNote", mins: "10 min", steps: [
+            { t: "Create a short post in Chinese", d: "By now your Chinese is good enough to post something real. Document your learning journey, share something about Germany, ask about sourcing in China. You're building a presence in your future market.", ex: "Post idea:\n德国学生学习中文和供应链！\n大家好，我是德国学生，我在学习中文，\n因为我想了解中国的采购行业。有什么建议吗？\n(German student learning Chinese & supply chain!\nHello everyone, I'm a German student learning Chinese\nbecause I want to understand China's sourcing industry. Any advice?)" }
+          ]}
+        ],
+        miss: "Tuesday speaking practice is the most important session in phase 3. Try to reschedule the call rather than skipping it entirely — even Thursday works."
+      },
+      // WED
+      {
+        label: "AirLearn + book + negotiation writing",
+        blocks: [
+          { title: "AirLearn + Book combo", pill: "pill-air", pillText: "AirLearn + Book", mins: "25 min", steps: [
+            { t: "AirLearn review — 10 min", d: "Clear the queue. Should take under 10 minutes now if you've been consistent.", ex: null },
+            { t: "Book — 15 min reading session", d: "Continue your Level 2 reader. After reading, write a 3-sentence summary in Chinese in your notebook. Not German — Chinese. This is the hardest exercise in the plan and also the most effective.", ex: null }
+          ]},
+          { title: "Fake negotiation writing", pill: "pill-write", pillText: "Write it down", mins: "5 min", steps: [
+            { t: "Write a negotiation exchange", d: "Write both sides of a short back-and-forth: you (European buyer) and a Chinese supplier. Price, quality, delivery. You're rehearsing exactly what your future agency will do every day.", ex: "买家：你好，这个产品的价格是多少？\n(Buyer: Hello, what is the price of this product?)\n供应商：您好，价格是50元一个。\n(Supplier: Hello, it's 50 yuan each.)\n买家：能便宜一点吗？我们订购1000个。\n(Buyer: Can it be cheaper? We're ordering 1000 pieces.)" }
+          ]}
+        ],
+        miss: "Missed Wednesday? Prioritise the AirLearn review over the book and writing. 10 minutes is enough to keep the maintenance going."
+      },
+      // THU
+      {
+        label: "Review + real supplier research",
+        blocks: [
+          { title: "AirLearn — review", pill: "pill-air", pillText: "AirLearn", mins: "10 min", steps: [
+            { t: "Standard review day", d: "Clear the queue. By now this should feel automatic — like brushing your teeth. That means the habit is fully built.", ex: null }
+          ]},
+          { title: "Real supplier research", pill: "pill-red", pillText: "RedNote + 1688", mins: "20 min", steps: [
+            { t: "Browse 1688.com in Chinese", d: "1688.com is China's biggest B2B wholesale platform — Alibaba but for Chinese buyers, entirely in Chinese. Browse it in Chinese. Try to understand a product listing.", ex: null },
+            { t: "Write down 5 terms you don't know", d: "These are real industry terms used by real suppliers. Add them to your business glossary. By end of phase 3 your glossary should have 150+ trade-specific terms.", ex: null }
+          ]}
+        ],
+        miss: "Missed Thursday? The 1688 research is the bonus. The AirLearn review is the must-do — even 5 minutes keeps the queue manageable."
+      },
+      // FRI
+      {
+        label: "Full reset + monthly self-test",
+        blocks: [
+          { title: "Full week review + self-assessment", pill: "pill-air", pillText: "All tools", mins: "30 min", steps: [
+            { t: "AirLearn: final queue clear — 5 min", d: "Nothing left flagged going into the weekend.", ex: null },
+            { t: "Monthly self-test (last Friday of each month) — 10 min", d: "Find a short Chinese business video on YouTube with no subtitles. Watch once. Write down in German everything you understood. Compare month to month — this number grows.", ex: null },
+            { t: "Notebook: running total — 5 min", d: "Count total vocabulary, business glossary terms, and how many written exercises you've done. Three numbers, one line, every Friday.", ex: "Month 9 Friday:\nVocab: 680 | Business terms: 134 | Written exercises: 47" },
+            { t: "Book: read + summarise in Chinese — 10 min", d: "Read 4 pages, write a 3-sentence summary in Chinese in your notebook. No German allowed in the summary.", ex: null }
+          ]}
+        ],
+        miss: "By phase 3, missing the Friday reset should be rare. If it happens: the word count review is the one thing to rescue — it takes 5 minutes and keeps motivation alive."
+      },
+      // SAT
+      {
+        label: "Rest day",
+        isRest: true,
+        restChar: "看",
+        restTitle: "Saturday — real immersion",
+        restDesc: "Rest day. Optional immersion if you feel like it — no pressure.",
+        optionalTitle: "Optional (20 min max)",
+        optionalText: "YouTube: 'Yiwu market documentary' or 'Chinese factory tour 2024'. Watch with purpose — you're building a mental picture of the industry you're entering."
+      },
+      // SUN
+      {
+        label: "Rest day",
+        isRest: true,
+        restChar: "梦",
+        restTitle: "Sunday — plan your China trip",
+        restDesc: "By end of phase 3 you should be thinking seriously about visiting China — even a short trip before your Bachelor is done.",
+        optionalTitle: "Optional (10 min)",
+        optionalText: "Research: Yiwu, Guangzhou Canton Fair, Shanghai trade shows. Then write your agency vision in Chinese — one paragraph about what your sourcing agency will do, who it serves, and why you're qualified. It doesn't need to be perfect. It needs to exist."
+      }
+    ]
+  }
+];
+
+let currentPhase = 0;
+let currentDay = 0;
+let wordPhase = 0;
+
+// ============================================================
+// WORD OF THE DAY
+// ============================================================
+function getRandomWord(p) {
+  const list = words[p];
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+function renderWord(w, p) {
+  document.getElementById('wotd-char').textContent = w.char;
+  document.getElementById('wotd-pinyin').textContent = w.pinyin;
+  document.getElementById('wotd-meaning').textContent = w.meaning;
+  const ex = w.example.split('\n');
+  document.getElementById('wotd-example').innerHTML = ex.map((line, i) => i === 0 ? `<span class="zh">${line}</span>` : line).join('<br>');
+  const badge = document.getElementById('wotd-badge');
+  const phaseNames = ['Phase 1', 'Phase 2', 'Phase 3'];
+  badge.textContent = phaseNames[p];
+  const colors = [
+    'background:var(--pill-book-bg);color:var(--pill-book)',
+    'background:var(--pill-air-bg);color:var(--pill-air)',
+    'background:var(--pill-write-bg);color:var(--pill-write)'
+  ];
+  badge.style.cssText = colors[p];
+}
+
+function newWord() {
+  wordPhase = currentPhase;
+  const w = getRandomWord(wordPhase);
+  renderWord(w, wordPhase);
+}
+
+// ============================================================
+// PHASE & DAY
+// ============================================================
+function setPhase(p) {
+  currentPhase = p;
+  currentDay = 0;
+  wordPhase = p;
+  document.querySelectorAll('.phase-tab').forEach((el, i) => el.classList.toggle('active', i === p));
+  document.querySelectorAll('.day-btn').forEach((el, i) => el.classList.toggle('active', i === 0));
+  renderWord(getRandomWord(p), p);
+  renderContent();
+}
+
+function setDay(d) {
+  currentDay = d;
+  document.querySelectorAll('.day-btn').forEach((el, i) => el.classList.toggle('active', i === d));
+  renderContent();
+}
+
+function toggleBlock(el) {
+  const block = el.closest('.block');
+  block.classList.toggle('open');
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderContent() {
+  const phase = phases[currentPhase];
+  const day = phase.days[currentDay];
+  const content = document.getElementById('main-content');
+  content.innerHTML = '';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'animate-in';
+
+  if (day.isRest) {
+    wrap.innerHTML = `
+      <div class="rest-panel">
+        <div class="rest-char">${day.restChar}</div>
+        <div class="rest-title">${day.restTitle}</div>
+        <div class="rest-desc">${day.restDesc}</div>
+        <div class="miss-box" style="text-align:left">
+          <div class="miss-title">${day.optionalTitle}</div>
+          <div class="miss-desc">${day.optionalText}</div>
+        </div>
+      </div>`;
+  } else {
+    let html = `<div class="blocks">`;
+    day.blocks.forEach((block, bi) => {
+      const stepsHtml = block.steps.map((step, si) => `
+        <div class="step">
+          <div class="step-num">${si + 1}</div>
+          <div class="step-body">
+            <div class="step-title">${step.t}</div>
+            <div class="step-desc">${step.d}</div>
+            ${step.ex ? `<div class="step-example">${formatExample(step.ex)}</div>` : ''}
+          </div>
+        </div>`).join('');
+
+      html += `
+        <div class="block${bi === 0 ? ' open' : ''}">
+          <div class="block-header" onclick="toggleBlock(this)">
+            <span class="pill ${block.pill}">${block.pillText}</span>
+            <span class="block-title">${block.title}</span>
+            <span class="block-mins">${block.mins}</span>
+            <span class="block-toggle">▶</span>
+          </div>
+          <div class="block-body">${stepsHtml}</div>
+        </div>`;
+    });
+    html += `</div>`;
+
+    if (day.miss) {
+      html += `<div class="miss-box" style="margin-top:12px">
+        <div class="miss-title">If you miss this day</div>
+        <div class="miss-desc">${day.miss}</div>
+      </div>`;
+    }
+
+    wrap.innerHTML = html;
+  }
+
+  // Progress
+  const prog = document.createElement('div');
+  prog.className = 'progress-area';
+  prog.innerHTML = `
+    <div class="progress-meta">
+      <span>${phase.title}</span>
+      <span>${phase.goal}</span>
+    </div>
+    <div class="prog-track">
+      <div class="prog-fill" style="width:${phase.progress}%"></div>
+    </div>`;
+
+  content.appendChild(wrap);
+  content.appendChild(prog);
+}
+
+function formatExample(ex) {
+  // Detect Chinese characters and colour them
+  return ex.split('\n').map(line => {
+    const hasChinese = /[\u4e00-\u9fa5]/.test(line);
+    if (hasChinese) return `<span class="zh">${line}</span>`;
+    return line;
+  }).join('<br>');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderWord(getRandomWord(0), 0);
+renderContent();
+</script>
+
+
+
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(function(e){ console.log('SW:', e); });
+}
+</script>
+
+</body>
+</html>
