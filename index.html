@@ -572,12 +572,19 @@
 <div class="container">
 
 
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-    <span style="font-size:18px;">💱</span>
-    <input id="rmb" type="number" placeholder="¥ Yuan" oninput="document.getElementById('eur').value=(this.value*0.13).toFixed(2)" style="width:110px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--text);font-family:inherit;font-size:14px;">
-    <span style="color:var(--muted);font-size:13px;">→</span>
-    <input id="eur" type="number" placeholder="€ Euro" oninput="document.getElementById('rmb').value=(this.value/0.13).toFixed(2)" style="width:110px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--text);font-family:inherit;font-size:14px;">
-    <span style="font-size:11px;color:var(--muted);margin-left:auto;">1 ¥ = 0.13 €</span>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:20px;">
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;">💱 Currency — 1 ¥ = 0.13 €</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="flex:1;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Chinese Yuan ¥</div>
+        <input id="rmb" type="number" inputmode="decimal" placeholder="0.00" oninput="document.getElementById('eur').value=(this.value*0.13).toFixed(2)" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:18px;font-weight:500;-webkit-appearance:none;appearance:none;outline:none;box-sizing:border-box;">
+      </div>
+      <div style="color:var(--muted);font-size:20px;margin-top:18px;">→</div>
+      <div style="flex:1;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Euro €</div>
+        <input id="eur" type="number" inputmode="decimal" placeholder="0.00" oninput="document.getElementById('rmb').value=(this.value/0.13).toFixed(2)" style="width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:18px;font-weight:500;-webkit-appearance:none;appearance:none;outline:none;box-sizing:border-box;">
+      </div>
+    </div>
   </div>
   <header>
     <div class="header-top">
